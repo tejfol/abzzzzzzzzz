@@ -1,10 +1,23 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@nuxt/image-edge",
+    "@nuxtjs/html-validator",
+    "nuxt-delay-hydration",
+  ],
+
   components: [{ path: "~/components", extensions: [".vue"] }],
+
   css: [
     "@/assets/css/tailwind.scss", // SCSS file in the project
   ],
+
+  delayHydration: {
+    mode: "mount",
+    // enables nuxt-delay-hydration in dev mode for testing
+    debug: process.env.NODE_ENV === "development",
+  },
 
   app: {
     head: {
